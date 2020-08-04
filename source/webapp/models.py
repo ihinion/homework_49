@@ -1,8 +1,5 @@
 from django.db import models
 
-STATUS_CHOICES = [('new', 'New'), ('in_progress', 'In progress'), ('done', 'Done')]
-TYPE_CHOICES = [('task', 'Task'), ('bug', 'Bug'), ('enhancement', 'Enhancement')]
-
 
 class Task(models.Model):
     description = models.CharField(max_length=200, null=False, blank=False, verbose_name='Description')
