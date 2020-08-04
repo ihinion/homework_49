@@ -14,7 +14,10 @@
 </head>
 <body>
 <div class="container">
-    {% block nav %}{% endblock %}
+    <nav class="navbar navbar-dark bg-primary mb-5">
+        <a class="navbar-brand font-weight-bold" href="{% url 'index' %}">IssueTracker</a>
+        <a class="navbar-brand font-weight-bold" href="#">Add task</a>
+    </nav>
     {% block content %}{% endblock %}
 </div>
 
