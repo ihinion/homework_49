@@ -58,42 +58,42 @@
   "model": "webapp.status",
   "pk": 1,
   "fields": {
-    "name": "new"
+    "name": "New"
   }
 },
 {
   "model": "webapp.status",
   "pk": 2,
   "fields": {
-    "name": "in_progress"
+    "name": "In progress"
   }
 },
 {
   "model": "webapp.status",
   "pk": 3,
   "fields": {
-    "name": "done"
+    "name": "Done"
   }
 },
 {
   "model": "webapp.type",
   "pk": 1,
   "fields": {
-    "name": "task"
+    "name": "Task"
   }
 },
 {
   "model": "webapp.type",
   "pk": 2,
   "fields": {
-    "name": "bug"
+    "name": "Bug"
   }
 },
 {
   "model": "webapp.type",
   "pk": 3,
   "fields": {
-    "name": "enhancement"
+    "name": "Enhancement"
   }
 },
 {

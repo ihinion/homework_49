@@ -18,16 +18,14 @@ class Task(models.Model):
 
 
 class Status(models.Model):
-    name = models.CharField(max_length=15, null=False, blank=False, verbose_name='Name',
-                            choices=STATUS_CHOICES, default=STATUS_CHOICES[0][0])
+    name = models.CharField(max_length=15, null=False, blank=False, verbose_name='Name')
 
     def __str__(self):
         return self.name
 
 
 class Type(models.Model):
-    name = models.CharField(max_length=15, null=False, blank=False, verbose_name='Name',
-                            choices=TYPE_CHOICES, default=TYPE_CHOICES[0][0])
+    name = models.CharField(max_length=15, null=False, blank=False, verbose_name='Name')
 
     def __str__(self):
         return self.name
