@@ -64,3 +64,20 @@ class TaskUpdateView(TemplateView):
             return redirect('task_view', pk=task.pk)
         else:
             return self.render_to_response({'form': form, 'task': task})
+
+
+class TaskDeleteView(TemplateView):
+    template_name = 'delete.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pk = self.kwargs.get('pk')
+        task = get_object_or_404(Task, pk=pk)
+        context['task'] = task
+        return context
+
+    def post(self, request, *args, **kwargs):
+        pk = self.kwargs.get('pk')
+        task = get_object_or_404(Task, pk=pk)
+        task.delete()
+        return redirect('index')

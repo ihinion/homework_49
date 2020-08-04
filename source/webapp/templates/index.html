@@ -5,5 +5,5 @@
     {% for task in tasks %}
         {% include 'partial/card.html' %}
     {% endfor %}
-    <a class="btn btn-primary btn-lg btn-block mb-4" href="#" role="button">Add</a>
+    <a class="btn btn-primary btn-lg btn-block mb-4" href="{% url 'create' %}" role="button">Add</a>
 {% endblock %}
