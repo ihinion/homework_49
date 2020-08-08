@@ -37,32 +37,41 @@ class TaskCreateView(FormView):
         return reverse('task_view', kwargs={'pk': self.task.pk})
 
 
-class TaskUpdateView(TemplateView):
+class TaskUpdateView(FormView):
     template_name = 'update.html'
+    form_class = TaskForm
+
+    def dispatch(self, request, *args, **kwargs):
+        self.task = self.get_object()
+        return super().dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        pk = self.kwargs.get('pk')
-        task = get_object_or_404(Task, pk=pk)
-        form = TaskForm(initial={
-            'description': task.description,
-            'detailed_desc': task.detailed_desc,
-            'status': task.status,
-            'type': task.type
-        })
-        context['form'] = form
-        context['task'] = task
+        context['task'] = self.task
         return context
 
-    def post(self, request, *args, **kwargs):
+    def get_initial(self):
+        initial = {
+                    'description': self.task.description,
+                    'detailed_desc': self.task.detailed_desc,
+                    'status': self.task.status,
+                    'type': self.task.type
+                }
+        return initial
+
+    def form_valid(self, form):
+        for key, value in form.cleaned_data.items():
+            if value is not None:
+                setattr(self.task, key, value)
+        self.task.save()
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('task_view', kwargs={'pk': self.task.pk})
+
+    def get_object(self):
         pk = self.kwargs.get('pk')
-        task = get_object_or_404(Task, pk=pk)
-        form = TaskForm(data=request.POST)
-        if form.is_valid():
-            Task.objects.filter(pk=pk).update(**form.cleaned_data)
-            return redirect('task_view', pk=task.pk)
-        else:
-            return self.render_to_response({'form': form, 'task': task})
+        return get_object_or_404(Task, pk=pk)
 
 
 class TaskDeleteView(TemplateView):
