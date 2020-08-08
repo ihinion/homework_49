@@ -6,8 +6,7 @@ class Task(models.Model):
     detailed_desc = models.TextField(max_length=1500, null=True, blank=True, verbose_name='Detailed description')
     status = models.ForeignKey('webapp.Status', related_name='tasks', on_delete=models.PROTECT,
                                verbose_name='Status')
-    type = models.ForeignKey('webapp.Type', related_name='tasks', on_delete=models.PROTECT,
-                             verbose_name='Type')
+    types = models.ManyToManyField('webapp.Type', related_name='task_set', verbose_name='Types')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Created at')
 
     def __str__(self):
