@@ -6,8 +6,10 @@
     "description": "Task 1",
     "detailed_desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem eligendi hic iste necessitatibus obcaecati sit veniam! Alias, quidem voluptatum.",
     "status": 1,
-    "type": 1,
-    "created_at": "2020-08-04T09:36:55.422Z"
+    "created_at": "2020-08-04T09:36:55.422Z",
+    "types": [
+      1
+    ]
   }
 },
 {
@@ -17,8 +19,10 @@
     "description": "Task 2",
     "detailed_desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem eligendi hic iste necessitatibus obcaecati sit veniam! Alias, quidem voluptatum.",
     "status": 2,
-    "type": 2,
-    "created_at": "2020-08-04T09:37:08.773Z"
+    "created_at": "2020-08-04T09:37:08.773Z",
+    "types": [
+      2
+    ]
   }
 },
 {
@@ -28,8 +32,10 @@
     "description": "Task 3",
     "detailed_desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem eligendi hic iste necessitatibus obcaecati sit veniam! Alias, quidem voluptatum.",
     "status": 3,
-    "type": 3,
-    "created_at": "2020-08-04T09:37:19.308Z"
+    "created_at": "2020-08-04T09:37:19.308Z",
+    "types": [
+      3
+    ]
   }
 },
 {
@@ -39,8 +45,10 @@
     "description": "Task 4",
     "detailed_desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem eligendi hic iste necessitatibus obcaecati sit veniam! Alias, quidem voluptatum.",
     "status": 1,
-    "type": 2,
-    "created_at": "2020-08-04T09:37:36.629Z"
+    "created_at": "2020-08-04T09:37:36.629Z",
+    "types": [
+      2
+    ]
   }
 },
 {
@@ -50,8 +58,38 @@
     "description": "Task 5",
     "detailed_desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem eligendi hic iste necessitatibus obcaecati sit veniam! Alias, quidem voluptatum.",
     "status": 3,
-    "type": 2,
-    "created_at": "2020-08-04T09:37:53.262Z"
+    "created_at": "2020-08-04T09:37:53.262Z",
+    "types": [
+      2
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 8,
+  "fields": {
+    "description": "it's a bug!",
+    "detailed_desc": "yes",
+    "status": 3,
+    "created_at": "2020-08-08T10:51:56.601Z",
+    "types": [
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 10,
+  "fields": {
+    "description": "Some new task",
+    "detailed_desc": "Very important text here",
+    "status": 2,
+    "created_at": "2020-08-08T13:38:53.119Z",
+    "types": [
+      1,
+      2,
+      3
+    ]
   }
 },
 {
@@ -101,7 +139,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$150000$aOPOmLR97zqp$N6VKDV3vOD5wjnFN8Oxr3hMRuLlNxS0hrCtm1s0z/Kk=",
-    "last_login": "2020-08-04T09:34:38.985Z",
+    "last_login": "2020-08-08T11:59:57.641Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "",
