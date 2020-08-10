@@ -9,5 +9,6 @@ class TaskForm(forms.Form):
                                     widget=widgets.Textarea)
     status = forms.ModelChoiceField(label='Status', required=True, queryset=Status.objects.all(),
                                     initial=Status.objects.get(name__iexact='new'))
-    type = forms.ModelChoiceField(label='Type', required=True, queryset=Type.objects.all(),
-                                  initial=Type.objects.get(name__iexact='task'))
+    types = forms.ModelMultipleChoiceField(label='Types', required=True, queryset=Type.objects.all(),
+                                           initial=Type.objects.get(name__iexact='task'),
+                                           widget=forms.CheckboxSelectMultiple)

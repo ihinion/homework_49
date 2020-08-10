@@ -8,6 +8,10 @@
     {% for error in field.errors %}
         <p class="form-error">{{ error }}</p>
     {% endfor %}
-    <p>{{ field|add_class:'form-control' }}</p>
+    {% if field.label != 'Types' %}
+        <p>{{ field|add_class:'form-control' }}</p>
+    {% else %}
+        <p>{{ field }}</p>
+    {% endif %}
 {% endfor %}
 <input class="btn btn-primary" type="submit" value="{{ button_text }}">

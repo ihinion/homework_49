@@ -2,7 +2,7 @@
     <div class="card-body">
         <h5 class="card-title font-weight-bold">{{ task.description }}</h5>
         <p class="text-justify"><b>Status: {{ task.status }} </b> <br>
-                                <b>Type:</b> {{ task.type }} </p>
+                                <b>Type:</b> {% for type in task.types.all %}{{ type.name }}{% if not forloop.last %}, {% endif %}{% endfor %} </p>
         <p>{{ task.detailed_desc }}</p>
         <form class="form-inline">
             <a class="btn btn-primary btn-sm mr-3" href="{% url 'task_view' task.pk %}" role="button">View</a>
