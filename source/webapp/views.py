@@ -30,9 +30,7 @@ class TaskCreateView(FormView):
     form_class = TaskForm
 
     def form_valid(self, form):
-        types = form.cleaned_data.pop('types')
-        self.task = Task.objects.create(**form.cleaned_data)
-        self.task.types.set(types)
+        self.task = form.save()
         return super().form_valid(form)
 
     def get_success_url(self):
@@ -52,18 +50,14 @@ class TaskUpdateView(FormView):
         context['task'] = self.task
         return context
 
-    def get_initial(self):
-        initial = {'description': self.task.description, 'detailed_desc': self.task.detailed_desc,
-                   'status': self.task.status, 'types': self.task.types.all()}
-        return initial
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs.pop('initial')
+        kwargs['instance'] = self.task
+        return kwargs
 
     def form_valid(self, form):
-        types = form.cleaned_data.pop('types')
-        for key, value in form.cleaned_data.items():
-            if value is not None:
-                setattr(self.task, key, value)
-        self.task.save()
-        self.task.types.set(types)
+        self.task = form.save()
         return super().form_valid(form)
 
     def get_success_url(self):
