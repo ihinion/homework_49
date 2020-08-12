@@ -4,14 +4,15 @@
     <p class="form-error">{{ error }}</p>
 {% endfor %}
 {% for field in form %}
-    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+    <label for="{{ field.id_for_label }}">{% if field.label != 'Detailed description' %}* {% endif %}{{ field.label }}:</label>
     {% for error in field.errors %}
         <p class="form-error">{{ error }}</p>
     {% endfor %}
     {% if field.label != 'Types' %}
         <p>{{ field|add_class:'form-control' }}</p>
     {% else %}
-        <p>{{ field }}</p>
+        {{ field|add_class:'checkbox-form' }}
     {% endif %}
 {% endfor %}
 <input class="btn btn-primary" type="submit" value="{{ button_text }}">
+
