@@ -11,6 +11,7 @@ class Task(models.Model):
                                verbose_name='Status')
     types = models.ManyToManyField('webapp.Type', related_name='task_set', verbose_name='Types')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Created at')
+    updated_at = models.DateTimeField(auto_now=True, verbose_name='Updated at')
 
     def __str__(self):
         return f'{self.pk}. {self.description}'
