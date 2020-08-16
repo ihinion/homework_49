@@ -7,6 +7,7 @@
     "detailed_desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem eligendi hic iste necessitatibus obcaecati sit veniam! Alias, quidem voluptatum.",
     "status": 1,
     "created_at": "2020-08-04T09:36:55.422Z",
+    "updated_at": "2020-08-14T12:14:27.012Z",
     "types": [
       1
     ]
@@ -20,6 +21,7 @@
     "detailed_desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem eligendi hic iste necessitatibus obcaecati sit veniam! Alias, quidem voluptatum.",
     "status": 2,
     "created_at": "2020-08-04T09:37:08.773Z",
+    "updated_at": "2020-08-14T12:14:27.012Z",
     "types": [
       2
     ]
@@ -33,6 +35,7 @@
     "detailed_desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem eligendi hic iste necessitatibus obcaecati sit veniam! Alias, quidem voluptatum.",
     "status": 3,
     "created_at": "2020-08-04T09:37:19.308Z",
+    "updated_at": "2020-08-14T12:14:27.012Z",
     "types": [
       3
     ]
@@ -46,6 +49,7 @@
     "detailed_desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem eligendi hic iste necessitatibus obcaecati sit veniam! Alias, quidem voluptatum.",
     "status": 1,
     "created_at": "2020-08-04T09:37:36.629Z",
+    "updated_at": "2020-08-14T12:14:27.012Z",
     "types": [
       2
     ]
@@ -59,6 +63,7 @@
     "detailed_desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem eligendi hic iste necessitatibus obcaecati sit veniam! Alias, quidem voluptatum.",
     "status": 3,
     "created_at": "2020-08-04T09:37:53.262Z",
+    "updated_at": "2020-08-14T12:14:27.012Z",
     "types": [
       2
     ]
@@ -72,6 +77,7 @@
     "detailed_desc": "yes",
     "status": 3,
     "created_at": "2020-08-08T10:51:56.601Z",
+    "updated_at": "2020-08-14T12:14:27.012Z",
     "types": [
       3
     ]
@@ -85,10 +91,41 @@
     "detailed_desc": "Very important text here",
     "status": 2,
     "created_at": "2020-08-08T13:38:53.119Z",
+    "updated_at": "2020-08-14T12:14:27.012Z",
     "types": [
       1,
       2,
       3
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 13,
+  "fields": {
+    "description": "some task",
+    "detailed_desc": "task",
+    "status": 2,
+    "created_at": "2020-08-10T20:29:26.803Z",
+    "updated_at": "2020-08-14T12:14:27.012Z",
+    "types": [
+      1,
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 14,
+  "fields": {
+    "description": "It's some fabulous bug",
+    "detailed_desc": "It's some fabulous bug",
+    "status": 2,
+    "created_at": "2020-08-15T12:25:44.157Z",
+    "updated_at": "2020-08-15T12:25:44.157Z",
+    "types": [
+      2
     ]
   }
 },
@@ -139,7 +176,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$150000$aOPOmLR97zqp$N6VKDV3vOD5wjnFN8Oxr3hMRuLlNxS0hrCtm1s0z/Kk=",
-    "last_login": "2020-08-08T11:59:57.641Z",
+    "last_login": "2020-08-11T09:58:13.591Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "",
