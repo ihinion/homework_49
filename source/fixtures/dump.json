@@ -130,6 +130,78 @@
   }
 },
 {
+  "model": "webapp.task",
+  "pk": 15,
+  "fields": {
+    "description": "Task",
+    "detailed_desc": "Task",
+    "status": 1,
+    "created_at": "2020-08-19T03:45:44.278Z",
+    "updated_at": "2020-08-19T03:45:44.279Z",
+    "types": [
+      1
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 16,
+  "fields": {
+    "description": "Task",
+    "detailed_desc": "TaskTask",
+    "status": 2,
+    "created_at": "2020-08-19T03:45:58.126Z",
+    "updated_at": "2020-08-19T03:45:58.126Z",
+    "types": [
+      2
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 17,
+  "fields": {
+    "description": "TaskTask",
+    "detailed_desc": "Task",
+    "status": 3,
+    "created_at": "2020-08-19T03:46:07.590Z",
+    "updated_at": "2020-08-19T03:46:07.590Z",
+    "types": [
+      1,
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 18,
+  "fields": {
+    "description": "Task",
+    "detailed_desc": "TaskTaskTaskTaskTask",
+    "status": 2,
+    "created_at": "2020-08-19T03:46:21.616Z",
+    "updated_at": "2020-08-19T03:46:21.616Z",
+    "types": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 19,
+  "fields": {
+    "description": "TaskTaskTask",
+    "detailed_desc": "TaskTask",
+    "status": 2,
+    "created_at": "2020-08-19T03:46:29.676Z",
+    "updated_at": "2020-08-19T03:46:29.676Z",
+    "types": [
+      1
+    ]
+  }
+},
+{
   "model": "webapp.status",
   "pk": 1,
   "fields": {
