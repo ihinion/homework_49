@@ -2,6 +2,7 @@
 {% block title %}Issue Tracker{% endblock %}
 
 {% block content %}
+    {% include 'partial/search.html' %}
     {% if is_paginated %}
         {% include 'partial/pagination.html' %}
     {% endif %}

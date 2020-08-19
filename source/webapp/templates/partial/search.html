@@ -1,0 +1,11 @@
+{% load widget_tweaks %}
+<form action="" method="GET">
+    {% for field in form %}
+        <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
+        <p>{{ field|add_class:'form-control' }}</p>
+        {% for error in field.errors %}
+            <p class="form-error">{{ error }}</p>
+        {% endfor %}
+    {% endfor %}
+    <input class="btn btn-primary mb-3" type="submit" value="Search">
+</form>
