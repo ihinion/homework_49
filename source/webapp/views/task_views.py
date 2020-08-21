@@ -1,14 +1,13 @@
 from urllib.parse import urlencode
-
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, render, redirect, reverse
 from django.views.generic import TemplateView, FormView, ListView
-from .models import Task
-from .forms import TaskForm, SearchForm
+from webapp.models import Task
+from webapp.forms import TaskForm, SearchForm
 
 
 class IndexView(ListView):
-    template_name = 'index.html'
+    template_name = 'task/index.html'
     model = Task
     context_object_name = 'tasks'
     paginate_by = 10
@@ -42,7 +41,7 @@ class IndexView(ListView):
 
 
 class TaskView(TemplateView):
-    template_name = 'task.html'
+    template_name = 'task/task.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -53,7 +52,7 @@ class TaskView(TemplateView):
 
 
 class TaskCreateView(FormView):
-    template_name = 'create.html'
+    template_name = 'task/create.html'
     form_class = TaskForm
 
     def form_valid(self, form):
@@ -65,7 +64,7 @@ class TaskCreateView(FormView):
 
 
 class TaskUpdateView(FormView):
-    template_name = 'update.html'
+    template_name = 'task/update.html'
     form_class = TaskForm
 
     def dispatch(self, request, *args, **kwargs):
@@ -96,7 +95,7 @@ class TaskUpdateView(FormView):
 
 
 class TaskDeleteView(TemplateView):
-    template_name = 'delete.html'
+    template_name = 'task/delete.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
