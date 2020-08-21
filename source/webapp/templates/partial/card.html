@@ -1,7 +1,8 @@
 <div class="card bg-light mb-3">
     <div class="card-body">
         <h5 class="card-title font-weight-bold">{{ task.description }}</h5>
-        <p class="text-justify"><b>Status: {{ task.status }} </b> <br>
+        <p class="text-justify"><b>Project: {{ task.project }} </b> <br>
+                                <b>Status:</b> {{ task.status }}  <br>
                                 <b>Type:</b> {% for type in task.types.all %}{{ type.name }}{% if not forloop.last %}, {% endif %}{% endfor %} </p>
         <p>{{ task.detailed_desc }}</p>
         <form class="form-inline">

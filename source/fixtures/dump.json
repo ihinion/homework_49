@@ -6,6 +6,7 @@
     "description": "Task 1",
     "detailed_desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem eligendi hic iste necessitatibus obcaecati sit veniam! Alias, quidem voluptatum.",
     "status": 1,
+    "project": 1,
     "created_at": "2020-08-04T09:36:55.422Z",
     "updated_at": "2020-08-14T12:14:27.012Z",
     "types": [
@@ -20,6 +21,7 @@
     "description": "Task 2",
     "detailed_desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem eligendi hic iste necessitatibus obcaecati sit veniam! Alias, quidem voluptatum.",
     "status": 2,
+    "project": 1,
     "created_at": "2020-08-04T09:37:08.773Z",
     "updated_at": "2020-08-14T12:14:27.012Z",
     "types": [
@@ -34,6 +36,7 @@
     "description": "Task 3",
     "detailed_desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem eligendi hic iste necessitatibus obcaecati sit veniam! Alias, quidem voluptatum.",
     "status": 3,
+    "project": 1,
     "created_at": "2020-08-04T09:37:19.308Z",
     "updated_at": "2020-08-14T12:14:27.012Z",
     "types": [
@@ -48,6 +51,7 @@
     "description": "Task 4",
     "detailed_desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem eligendi hic iste necessitatibus obcaecati sit veniam! Alias, quidem voluptatum.",
     "status": 1,
+    "project": 1,
     "created_at": "2020-08-04T09:37:36.629Z",
     "updated_at": "2020-08-14T12:14:27.012Z",
     "types": [
@@ -62,6 +66,7 @@
     "description": "Task 5",
     "detailed_desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem eligendi hic iste necessitatibus obcaecati sit veniam! Alias, quidem voluptatum.",
     "status": 3,
+    "project": 1,
     "created_at": "2020-08-04T09:37:53.262Z",
     "updated_at": "2020-08-14T12:14:27.012Z",
     "types": [
@@ -76,6 +81,7 @@
     "description": "it's a bug!",
     "detailed_desc": "yes",
     "status": 3,
+    "project": 1,
     "created_at": "2020-08-08T10:51:56.601Z",
     "updated_at": "2020-08-14T12:14:27.012Z",
     "types": [
@@ -90,6 +96,7 @@
     "description": "Some new task",
     "detailed_desc": "Very important text here",
     "status": 2,
+    "project": 1,
     "created_at": "2020-08-08T13:38:53.119Z",
     "updated_at": "2020-08-14T12:14:27.012Z",
     "types": [
@@ -106,6 +113,7 @@
     "description": "some task",
     "detailed_desc": "task",
     "status": 2,
+    "project": 1,
     "created_at": "2020-08-10T20:29:26.803Z",
     "updated_at": "2020-08-14T12:14:27.012Z",
     "types": [
@@ -122,6 +130,7 @@
     "description": "It's some fabulous bug",
     "detailed_desc": "It's some fabulous bug",
     "status": 2,
+    "project": 1,
     "created_at": "2020-08-15T12:25:44.157Z",
     "updated_at": "2020-08-15T12:25:44.157Z",
     "types": [
@@ -136,6 +145,7 @@
     "description": "Task",
     "detailed_desc": "Task",
     "status": 1,
+    "project": 1,
     "created_at": "2020-08-19T03:45:44.278Z",
     "updated_at": "2020-08-19T03:45:44.279Z",
     "types": [
@@ -150,6 +160,7 @@
     "description": "Task",
     "detailed_desc": "TaskTask",
     "status": 2,
+    "project": 1,
     "created_at": "2020-08-19T03:45:58.126Z",
     "updated_at": "2020-08-19T03:45:58.126Z",
     "types": [
@@ -164,6 +175,7 @@
     "description": "TaskTask",
     "detailed_desc": "Task",
     "status": 3,
+    "project": 1,
     "created_at": "2020-08-19T03:46:07.590Z",
     "updated_at": "2020-08-19T03:46:07.590Z",
     "types": [
@@ -179,6 +191,7 @@
     "description": "Task",
     "detailed_desc": "TaskTaskTaskTaskTask",
     "status": 2,
+    "project": 1,
     "created_at": "2020-08-19T03:46:21.616Z",
     "updated_at": "2020-08-19T03:46:21.616Z",
     "types": [
@@ -194,6 +207,7 @@
     "description": "TaskTaskTask",
     "detailed_desc": "TaskTask",
     "status": 2,
+    "project": 1,
     "created_at": "2020-08-19T03:46:29.676Z",
     "updated_at": "2020-08-19T03:46:29.676Z",
     "types": [
@@ -241,6 +255,16 @@
   "pk": 3,
   "fields": {
     "name": "Enhancement"
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 1,
+  "fields": {
+    "name": "Project One",
+    "description": "Some important project",
+    "start_date": "2020-08-21",
+    "end_date": null
   }
 },
 {
