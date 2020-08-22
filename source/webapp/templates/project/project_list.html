@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Issue Tracker{% endblock %}
+
+{% block content %}
+    {% include 'partial/search.html' %}
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+    {% for project in projects %}
+        <div class="card bg-light mb-3">
+            <div class="card-body">
+                <h5 class="card-title font-weight-bold">{{ project.name }}</h5>
+                <p class="text-justify"><b>Project id: {{ project.pk }} </b> <br>
+                <p class="text-justify"><b>Description:</b> {{ project.description }}  <br>
+                <form class="form-inline">
+                    <a class="btn btn-primary btn-sm mr-3" href="{% url 'project_view' project.pk %}" role="button">View</a>
+                </form>
+            </div>
+        </div>
+    {% endfor %}
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+    <a class="btn btn-primary btn-lg btn-block mb-4" href="#" role="button">Create project</a>
+{% endblock %}
