@@ -1,0 +1,12 @@
+<div class="card bg-light mb-3">
+    <div class="card-body">
+        <h5 class="card-title font-weight-bold">Project name: {{ project.name }}</h5>
+        <p class="text-justify"><b>Project id: {{ project.pk }} </b> <br>
+        <p class="text-justify"><b>Description: {{ project.description }} </b> <br>
+        <p class="text-justify"><b>Started: {{ project.start_date }} </b> <br>
+        <p class="text-justify"><b>Ended: {% if project.end_date is not None %}{{ project.end_date }}{% endif %} </b> <br>
+        <form class="form-inline">
+            <a class="btn btn-primary btn-sm mr-3" href="#" role="button">Add task</a>
+        </form>
+    </div>
+</div>

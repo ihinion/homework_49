@@ -1,7 +1,7 @@
 from urllib.parse import urlencode
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, render, redirect, reverse
-from django.views.generic import TemplateView, FormView, ListView
+from django.views.generic import TemplateView, FormView, ListView, DetailView
 from webapp.models import Task, Project
 from webapp.forms import TaskForm, SearchForm
 
@@ -38,3 +38,8 @@ class ProjectListView(ListView):
         if self.form.is_valid():
             return self.form.cleaned_data['search']
         return None
+
+
+class ProjectView(DetailView):
+    template_name = 'project/project.html'
+    model = Project

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Project #{{ project.pk }} {% endblock %}}
+{% block content %}
+    {% include 'partial/project_card.html' %}
+    <hr class="mt-4">
+    <h4 class="my-4">Tasks:</h4>
+    {% if project.tasks.all %}
+        {% for task in project.tasks.all %}
+            {% include 'partial/card.html' %}
+        {% endfor %}
+    {% else %}
+        <p>This project has no tasks yet</p>
+    {% endif %}
+{% endblock %}
