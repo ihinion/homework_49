@@ -14,9 +14,22 @@
 </head>
 <body>
 <div class="container">
-    <nav class="navbar navbar-dark bg-primary mb-4">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
         <a class="navbar-brand font-weight-bold" href="{% url 'index' %}">IssueTracker</a>
-        <a class="navbar-brand font-weight-bold" href="{% url 'create' %}">Add task</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'projects_list' %}">Project list <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'create' %}">Add task <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
     </nav>
     {% block content %}{% endblock %}
 </div>
