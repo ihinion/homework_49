@@ -4,14 +4,16 @@
     <p class="form-error">{{ error }}</p>
 {% endfor %}
 {% for field in form %}
-    <label for="{{ field.id_for_label }}">{% if field.label != 'Detailed description' %}* {% endif %}{{ field.label }}:</label>
+    <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
     {% for error in field.errors %}
         <p class="form-error">{{ error }}</p>
     {% endfor %}
-    {% if field.label != 'Types' %}
-        <p>{{ field|add_class:'form-control' }}</p>
-    {% else %}
+    {% if field.label == 'Start date' or field.label == 'End date' %}
+        <p>{{ field|add_class:'form-control'|attr:"placeholder:YYYY-MM-DD" }}</p>
+    {% elif field.label == 'Types' %}
         {{ field|add_class:'checkbox-form' }}
+    {% else %}
+        <p>{{ field|add_class:'form-control' }}</p>
     {% endif %}
 {% endfor %}
 <input class="btn btn-primary" type="submit" value="{{ button_text }}">

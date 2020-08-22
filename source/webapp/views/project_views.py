@@ -1,9 +1,9 @@
 from urllib.parse import urlencode
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, render, redirect, reverse
-from django.views.generic import TemplateView, FormView, ListView, DetailView
+from django.views.generic import TemplateView, FormView, ListView, DetailView, CreateView
 from webapp.models import Task, Project
-from webapp.forms import TaskForm, SearchForm
+from webapp.forms import TaskForm, SearchForm, ProjectForm
 
 
 class ProjectListView(ListView):
@@ -43,3 +43,12 @@ class ProjectListView(ListView):
 class ProjectView(DetailView):
     template_name = 'project/project.html'
     model = Project
+
+
+class ProjectCreateView(CreateView):
+    template_name = 'project/create.html'
+    form_class = ProjectForm
+    model = Project
+
+    def get_success_url(self):
+        return reverse('project_view', kwargs={'pk': self.object.pk})
