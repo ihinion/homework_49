@@ -2,5 +2,6 @@
 {% block title %}Add task{% endblock %}
 {% block content %}
     <h1>Add task</h1>
-    {% include 'partial/project_task_form.html' %}
+    {% url "" as action_url %}
+    {% include 'partial/form.html' with button_text='Add' form_method='post' %}
 {% endblock %}

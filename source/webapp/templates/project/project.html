@@ -6,7 +6,7 @@
     <h4 class="my-4">Tasks:</h4>
     {% if project.tasks.all %}
         {% for task in project.tasks.all %}
-            {% include 'partial/card.html' %}
+            {% include 'partial/task_card.html' %}
         {% endfor %}
     {% else %}
         <p>This project has no tasks yet</p>

@@ -2,7 +2,6 @@
 {% block title %}Create project{% endblock %}
 {% block content %}
     <h1>Create project</h1>
-    <form method="POST" action="{% url "project_create" %}">
-        {% include 'partial/form.html' with button_text='Create' %}
-    </form>
+    {% url 'project_create' as action_url %}
+    {% include 'partial/form.html' with button_text='Create' action_url=action_url form_method='post' %}
 {% endblock %}
