@@ -1,9 +1,9 @@
 from urllib.parse import urlencode
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, render, redirect, reverse
-from django.views.generic import TemplateView, FormView, ListView
-from webapp.models import Task
-from webapp.forms import TaskForm, SearchForm
+from django.views.generic import TemplateView, FormView, ListView, CreateView
+from webapp.models import Task, Project
+from webapp.forms import TaskForm, SearchForm, ProjectTaskForm
 
 
 class IndexView(ListView):
@@ -109,3 +109,18 @@ class TaskDeleteView(TemplateView):
         task = get_object_or_404(Task, pk=pk)
         task.delete()
         return redirect('index')
+
+
+class ProjectTaskCreateView(CreateView):
+    model = Task
+    template_name = 'task/create_from_project.html'
+    form_class = ProjectTaskForm
+
+    def form_valid(self, form):
+        project = get_object_or_404(Project, pk=self.kwargs.get('pk'))
+        types = form.cleaned_data.pop('types')
+        task = form.save(commit=False)
+        task.project = project
+        task.save()
+        task.types.set(types)
+        return redirect('task_view', pk=task.pk)

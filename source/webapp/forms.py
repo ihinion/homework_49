@@ -21,3 +21,12 @@ class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
         exclude = []
+
+
+class ProjectTaskForm(forms.ModelForm):
+    class Meta:
+        model = Task
+        fields = ['description', 'detailed_desc', 'status', 'types']
+        widgets = {
+            'types': CheckboxSelectMultiple,
+        }
