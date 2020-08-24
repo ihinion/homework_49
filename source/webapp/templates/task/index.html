@@ -2,7 +2,6 @@
 {% block title %}Issue Tracker{% endblock %}
 
 {% block content %}
-    {% include 'partial/search.html' %}
     {% if is_paginated %}
         {% include 'partial/pagination.html' %}
     {% endif %}
@@ -12,5 +11,5 @@
     {% if is_paginated %}
         {% include 'partial/pagination.html' %}
     {% endif %}
-    <a class="btn btn-primary btn-lg btn-block mb-4" href="{% url 'create' %}" role="button">Add</a>
+    <a class="btn btn-primary btn-lg btn-block mb-4" href="{% url 'create' %}" role="button">Add task</a>
 {% endblock %}

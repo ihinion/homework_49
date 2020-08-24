@@ -2,7 +2,6 @@
 {% block title %}Issue Tracker{% endblock %}
 
 {% block content %}
-    {% include 'partial/search.html' %}
     {% if is_paginated %}
         {% include 'partial/pagination.html' %}
     {% endif %}
@@ -22,4 +21,8 @@
         {% include 'partial/pagination.html' %}
     {% endif %}
     <a class="btn btn-primary btn-lg btn-block mb-4" href="{% url 'project_create' %}" role="button">Create project</a>
+{% endblock %}
+{% block search %}
+    {% url 'projects_list' as action_url %}
+    {% include 'partial/search.html' with action_url=action_url %}
 {% endblock %}
