@@ -10,7 +10,7 @@ class Task(models.Model):
     status = models.ForeignKey('webapp.Status', related_name='tasks', on_delete=models.PROTECT,
                                verbose_name='Status')
     types = models.ManyToManyField('webapp.Type', related_name='task_set', verbose_name='Types')
-    project = models.ForeignKey('webapp.Project', related_name='tasks', on_delete=models.PROTECT,
+    project = models.ForeignKey('webapp.Project', related_name='tasks', on_delete=models.CASCADE,
                                 verbose_name='Project')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Created at')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Updated at')
