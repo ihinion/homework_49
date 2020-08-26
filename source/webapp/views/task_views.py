@@ -1,7 +1,7 @@
 from urllib.parse import urlencode
 from django.db.models import Q
-from django.shortcuts import get_object_or_404, render, redirect, reverse
-from django.views.generic import TemplateView, FormView, ListView, CreateView, UpdateView, DeleteView
+from django.shortcuts import get_object_or_404, redirect, reverse
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from webapp.models import Task, Project
 from webapp.forms import TaskForm, SearchForm, ProjectTaskForm
 
@@ -40,27 +40,18 @@ class IndexView(ListView):
         return None
 
 
-class TaskView(TemplateView):
+class TaskView(DetailView):
     template_name = 'task/task.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        pk = self.kwargs.get('pk')
-        task = get_object_or_404(Task, pk=pk)
-        context['task'] = task
-        return context
+    model = Task
 
 
-class TaskCreateView(FormView):
+class TaskCreateView(CreateView):
     template_name = 'task/create.html'
     form_class = TaskForm
-
-    def form_valid(self, form):
-        self.task = form.save()
-        return super().form_valid(form)
+    model = Task
 
     def get_success_url(self):
-        return reverse('task_view', kwargs={'pk': self.task.pk})
+        return reverse('task_view', kwargs={'pk': self.object.pk})
 
 
 class TaskUpdateView(UpdateView):
