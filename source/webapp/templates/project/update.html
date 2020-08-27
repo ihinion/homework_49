@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block title %}Update project{% endblock %}
 {% block content %}
-<div class="container">
-    <h2 class="my-3">Update project</h2>
+    <div class="container">
+        <h2 class="my-3">Update project</h2>
         {% url "project_update" pk=project.pk as action_url %}
         {% include 'partial/form.html' with action_url=action_url form_method='post' button_text='Update' %}
-        <a class="btn btn-warning mt-2" href="{% url 'project_view' project.pk %}" role="button">View project</a><br>
-        <a class="btn btn-secondary mt-2" href="{% url 'index' %}" role="button">Index</a>
-</div>
+        <a class="btn btn-info mt-2" href="{% url 'project_view' project.pk %}" role="button">View project</a><br>
+    </div>
 {% endblock %}
+
