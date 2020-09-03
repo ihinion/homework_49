@@ -5,10 +5,12 @@
         <p class="text-justify"><b>Description: {{ project.description }} </b> <br>
         <p class="text-justify"><b>Started: {{ project.start_date }} </b> <br>
         <p class="text-justify"><b>Ended: {% if project.end_date is not None %}{{ project.end_date }}{% endif %} </b> <br>
-        <form class="form-inline">
-            <a class="btn btn-primary btn-sm mr-3" href="{% url 'project_task_add' project.pk %}" role="button">Add task</a>
-            <a class="btn btn-danger btn-sm mr-3" href="{% url 'project_delete' project.pk %}" role="button">Delete</a>
-            <a class="btn btn-info btn-sm mr-3" href="{% url 'project_update' project.pk %}" role="button">Update</a>
-        </form>
+        {% if request.user.is_authenticated %}
+            <form class="form-inline">
+                <a class="btn btn-primary btn-sm mr-3" href="{% url 'project_task_add' project.pk %}" role="button">Add task</a>
+                <a class="btn btn-danger btn-sm mr-3" href="{% url 'project_delete' project.pk %}" role="button">Delete</a>
+                <a class="btn btn-info btn-sm mr-3" href="{% url 'project_update' project.pk %}" role="button">Update</a>
+            </form>
+        {% endif %}
     </div>
 </div>
