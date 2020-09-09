@@ -1,5 +1,5 @@
 from urllib.parse import urlencode
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.db.models import Q
 from django.shortcuts import reverse, get_object_or_404, redirect
@@ -48,10 +48,13 @@ class ProjectView(DetailView):
     model = Project
 
 
-class ProjectCreateView(LoginRequiredMixin, CreateView):
+class ProjectCreateView(UserPassesTestMixin, CreateView):
     template_name = 'project/create.html'
     form_class = ProjectForm
     model = Project
+
+    def test_func(self):
+        return self.request.user.has_perm('webapp.add_project')
 
     def form_valid(self, form):
         users = User.objects.filter(pk=self.request.user.pk)
@@ -64,19 +67,25 @@ class ProjectCreateView(LoginRequiredMixin, CreateView):
         return reverse('project_view', kwargs={'pk': self.object.pk})
 
 
-class ProjectUpdateView(LoginRequiredMixin, UpdateView):
+class ProjectUpdateView(UserPassesTestMixin, UpdateView):
     template_name = 'project/update.html'
     form_class = ProjectForm
     model = Project
+
+    def test_func(self):
+        return self.request.user.has_perm('webapp.change_project')
 
     def get_success_url(self):
         return reverse('project_view', kwargs={'pk': self.object.pk})
 
 
-class ProjectDeleteView(LoginRequiredMixin, DeleteView):
+class ProjectDeleteView(UserPassesTestMixin, DeleteView):
     template_name = 'project/delete.html'
     model = Project
     success_url = reverse_lazy('projects_list')
+
+    def test_func(self):
+        return self.request.user.has_perm('webapp.delete_project')
 
 
 class UpdateProjectUsers(LoginRequiredMixin, UpdateView):
