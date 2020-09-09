@@ -11,7 +11,7 @@
         {% endfor %}
         {% if field.label == 'Start date' or field.label == 'End date' %}
             <p>{{ field|add_class:'form-control'|attr:"placeholder:YYYY-MM-DD" }}</p>
-        {% elif field.label == 'Types' %}
+        {% elif field.label == 'Types' or field.label == 'Users' %}
             {{ field|add_class:'checkbox-form' }}
         {% else %}
             <p>{{ field|add_class:'form-control' }}</p>

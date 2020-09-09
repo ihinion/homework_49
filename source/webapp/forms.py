@@ -20,7 +20,16 @@ class SearchForm(forms.Form):
 class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
-        exclude = []
+        exclude = ['users']
+
+
+class UpdateProjectUsers(forms.ModelForm):
+    class Meta:
+        model = Project
+        fields = ['users']
+        widgets = {
+            'users': CheckboxSelectMultiple,
+        }
 
 
 class ProjectTaskForm(forms.ModelForm):

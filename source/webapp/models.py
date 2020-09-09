@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from .validators import restricted_text_art, no_caps
 
@@ -36,6 +37,7 @@ class Type(models.Model):
 class Project(models.Model):
     name = models.CharField(max_length=50, verbose_name='Name')
     description = models.TextField(max_length=400, verbose_name='Description')
+    users = models.ManyToManyField(get_user_model(), related_name='projects', verbose_name='Users')
     start_date = models.DateField(verbose_name='Start date')
     end_date = models.DateField(verbose_name='End date', null=True, blank=True)
 
