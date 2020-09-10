@@ -5,9 +5,13 @@
     <hr class="mt-4">
     <h4 class="my-4">Tasks:</h4>
     {% if project.tasks.all %}
-        {% for task in project.tasks.all %}
-            {% include 'partial/task_card.html' %}
-        {% endfor %}
+        {% if request.user in project.users.all %}
+            {% for task in project.tasks.all %}
+                {% include 'partial/task_card.html' %}
+            {% endfor %}
+        {% else %}
+            <p>You don't have necessary permissions to view these tasks</p>
+        {% endif %}
     {% else %}
         <p>This project has no tasks yet</p>
     {% endif %}

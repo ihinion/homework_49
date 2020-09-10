@@ -1,5 +1,5 @@
 from urllib.parse import urlencode
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin, PermissionRequiredMixin
 from django.contrib.auth.models import User
 from django.db.models import Q
 from django.shortcuts import reverse, get_object_or_404, redirect
@@ -9,11 +9,11 @@ from webapp.models import Project
 from webapp.forms import SearchForm, ProjectForm, UpdateProjectUsers
 
 
-class ProjectListView(ListView):
-    template_name = 'project/project_list.html'
+class IndexView(ListView):
+    template_name = 'project/index.html'
     model = Project
     context_object_name = 'projects'
-    paginate_by = 10
+    paginate_by = 5
 
     def get(self, request, *args, **kwargs):
         self.form = self.get_search_form()
@@ -46,6 +46,12 @@ class ProjectListView(ListView):
 class ProjectView(DetailView):
     template_name = 'project/project.html'
     model = Project
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        if self.request.user.groups.filter(name__in=['Team Lead', 'Project Manager']):
+            context['groups'] = True
+        return context
 
 
 class ProjectCreateView(UserPassesTestMixin, CreateView):
@@ -82,22 +88,21 @@ class ProjectUpdateView(UserPassesTestMixin, UpdateView):
 class ProjectDeleteView(UserPassesTestMixin, DeleteView):
     template_name = 'project/delete.html'
     model = Project
-    success_url = reverse_lazy('projects_list')
+    success_url = reverse_lazy('index')
 
     def test_func(self):
         return self.request.user.has_perm('webapp.delete_project')
 
 
-class UpdateProjectUsers(LoginRequiredMixin, UpdateView):
+class UpdateProjectUsers(UserPassesTestMixin, UpdateView):
     template_name = 'project/update_users.html'
     form_class = UpdateProjectUsers
     model = Project
 
-    # def form_valid(self, form):
-    #     project = get_object_or_404(Project, pk=self.kwargs.get('pk'))
-    #     users = form.cleaned_data.pop('users')
-    #     project.users.set(users)
-    #     return super().form_valid(form)
+    def test_func(self):
+        project = get_object_or_404(Project, pk=self.kwargs.get('pk'))
+        return self.request.user in project.users.all() \
+               and self.request.user.groups.filter(name__in=['Team Lead', 'Project Manager'])
 
     def get_success_url(self):
         return reverse('project_view', kwargs={'pk': self.object.pk})

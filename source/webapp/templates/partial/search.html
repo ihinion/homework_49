@@ -1,11 +1,6 @@
 {% load widget_tweaks %}
 <form action="{{ action_url }}" method="GET" class="form-inline my-2 my-lg-0">
-    {% url 'projects_list' as project_list %}
-    {% if action_url == project_list %}
         {{ search_form.search|add_class:'form-control mr-sm-2'|attr:"placeholder:Project search" }}
-    {% else %}
-        {{ search_form.search|add_class:'form-control mr-sm-2'|attr:"placeholder:Task search" }}
-    {% endif %}
 <input class="btn btn-outline-light" type="submit" value="Search">
 </form>
 

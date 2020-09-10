@@ -22,16 +22,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'projects_list' %}">Project list <span class="sr-only">(current)</span></a>
-                    </li>
                     {% if request.user.is_authenticated %}
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'create' %}">Add task <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'project_create' %}">Add project <span class="sr-only">(current)</span></a>
-                    </li>
+                        {% if perms.webapp.add_project %}
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{% url 'project_create' %}">Add project <span class="sr-only">(current)</span></a>
+                            </li>
+                        {% endif %}
                     <li class="nav-item active">
                         <a class="nav-link" href="{% url 'accounts:logout' %}?next={{ request.get_full_path }}">Sign out <span class="sr-only">(current)</span></a>
                     </li>
