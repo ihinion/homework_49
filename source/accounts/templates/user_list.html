@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}User list{% endblock %}
+
+{% block content %}
+    {% for user_obj in users %}
+        {% include 'partial/user_card.html' %}
+    {% endfor %}
+{% endblock %}
