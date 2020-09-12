@@ -9,5 +9,5 @@ class Profile(models.Model):
     profile_pic = models.ImageField(null=True, blank=True, upload_to='user_pics', verbose_name='Profile pic')
 
     def __str__(self):
-        return self.user.get_full_name() + "'s Profile"
+        return self.user.username + "'s Profile"
 

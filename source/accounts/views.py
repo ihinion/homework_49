@@ -4,7 +4,7 @@ from django.contrib.auth import login, get_user_model
 from django.views.generic import CreateView, DetailView, ListView
 from accounts.forms import MyUserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-
+from accounts.models import Profile
 from webapp.models import Project
 
 
@@ -15,6 +15,7 @@ class RegisterView(CreateView):
 
     def form_valid(self, form):
         user = form.save()
+        Profile.objects.create(user=user)
         login(self.request, user)
         return redirect('index')
 
