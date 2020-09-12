@@ -23,6 +23,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     {% if request.user.is_authenticated %}
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'accounts:detail' request.user.pk %}">Hello, {{ request.user.username }} <span class="sr-only">(current)</span></a>
+                        </li>
+                        {% block menu_links %}{% endblock %}
                         {% if perms.webapp.add_project %}
                             <li class="nav-item active">
                                 <a class="nav-link" href="{% url 'project_create' %}">Add project <span class="sr-only">(current)</span></a>
@@ -46,6 +50,7 @@
     </nav>
     <div class="container">
         {% block content %}{% endblock %}
+        {% block add_content %}{% endblock %}
     </div>
 
 

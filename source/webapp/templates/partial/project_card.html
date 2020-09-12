@@ -5,12 +5,15 @@
         <p><b>Description: {{ project.description }} </b> <br>
         <p><b>Started: {{ project.start_date }} </b> <br>
         <p><b>Ended: {% if project.end_date is not None %}{{ project.end_date }}{% endif %} </b> <br>
-        <p><b>Users:</b> {% for user in project.users.all %}{{ user.username }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+        <p><b>Users:</b> {% for user in project.users.all %}<a href="{% url 'accounts:detail' user.pk %}">{{ user.username }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</p>
         {% if request.user.is_authenticated %}
             <br>
             <div class="form-inline">
                 {% if perms.webapp.add_task and request.user in project.users.all %}
                     <a class="btn btn-primary btn-sm mr-3" href="{% url 'project_task_add' project.pk %}" role="button">Add task</a>
+                {% endif %}
+                {% if 'accounts' in request.path %}
+                    <a class="btn btn-secondary btn-sm mr-3" href="{% url 'project_view' project.pk %}" role="button">View project</a>
                 {% endif %}
                 {% if perms.webapp.delete_project %}
                     <a class="btn btn-danger btn-sm mr-3" href="{% url 'project_delete' project.pk %}" role="button">Delete</a>

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}User page{% endblock %}
+
+{% block menu_links %}
+    <li class="nav-item">
+        <a class="nav-link ml-4" href="#">Edit</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link mr-4" href="#">Change password</a>
+    </li>
+{% endblock %}
+
+{% block content %}
+    <div class="media">
+        <img src="{{ user_obj.profile.profile_pic.url }}" class="align-self-start mr-3" width="250" height="auto" alt="user picture">
+        <div class="media-body">
+        <h5 class="mt-0">Page of {{ user_obj.get_full_name|default:user_obj.username }}</h5>
+        <p>Username: {{ user_obj.username }}</p>
+        <p>Github profile: <a href="{{ user_obj.profile.githubprofile }}">{{ user_obj.profile.githubprofile }}</a></p>
+        <p>About: {{ user_obj.profile.about }}</p>
+        </div>
+    </div>
+    <hr>
+    <h2 class="my-3">Projects of {{ user_obj.username }}:</h2>
+    {% for project in projects %}
+        {% include 'partial/project_card.html' %}
+    {% endfor %}
+{% endblock %}
