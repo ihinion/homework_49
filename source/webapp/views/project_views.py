@@ -104,7 +104,7 @@ class UpdateProjectUsers(UserPassesTestMixin, UpdateView):
     def test_func(self):
         project = get_object_or_404(Project, pk=self.kwargs.get('pk'))
         return self.request.user in project.users.all() \
-               and self.request.user.groups.filter(name__in=['Team Lead', 'Project Manager'])
+               and self.request.user.has_perm('accounts.can_manage_users')
 
     def get_success_url(self):
         return reverse('project_view', kwargs={'pk': self.object.pk})

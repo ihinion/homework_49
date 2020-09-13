@@ -3,7 +3,7 @@ from django.shortcuts import redirect
 from django.contrib.auth import login, get_user_model
 from django.views.generic import CreateView, DetailView, ListView
 from accounts.forms import MyUserCreationForm
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin, PermissionRequiredMixin
 from accounts.models import Profile
 from webapp.models import Project
 
@@ -15,7 +15,7 @@ class RegisterView(CreateView):
 
     def form_valid(self, form):
         user = form.save()
-        Profile.objects.create(user=user)
+        Profile.objects.create(user=user).save()
         login(self.request, user)
         return redirect('index')
 
@@ -31,13 +31,11 @@ class UserDetailView(LoginRequiredMixin, DetailView):
         return super().get_context_data(**kwargs)
 
 
-class UserListView(UserPassesTestMixin, ListView):
+class UserListView(PermissionRequiredMixin, ListView):
     template_name = 'user_list.html'
     model = get_user_model()
     context_object_name = 'users'
-
-    def test_func(self):
-        return self.request.user.groups.filter(name__in=['Team Lead', 'Project Manager'])
+    permission_required = 'accounts.can_view_user_list'
 
     def get_queryset(self):
         queryset = super().get_queryset().exclude(username='admin')

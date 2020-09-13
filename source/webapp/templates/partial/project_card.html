@@ -21,7 +21,7 @@
                 {% if perms.webapp.change_project %}
                     <a class="btn btn-info btn-sm mr-3" href="{% url 'project_update' project.pk %}" role="button">Update</a>
                 {% endif %}
-                {% if groups and request.user in project.users.all %}
+                {% if perms.accounts.can_manage_users and request.user in project.users.all %}
                     <a class="btn btn-outline-primary btn-sm mr-3" href="{% url 'users_update' project.pk %}" role="button">Manage users</a>
                 {% endif %}
             </div>
