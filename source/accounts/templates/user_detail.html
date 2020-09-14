@@ -12,7 +12,11 @@
 
 {% block content %}
     <div class="media">
-        <img src="{{ user_obj.profile.profile_pic.url }}" class="align-self-start mr-3" width="250" height="auto" alt="user picture">
+        {% if user_obj.profile.profile_pic %}
+            <img src="{{ user_obj.profile.profile_pic.url }}" class="align-self-start mr-3" width="250" height="auto" alt="user picture">
+        {% else %}
+            <img src="https://vk.com/images/camera_200.png" class="align-self-start mr-3" width="250" height="auto" alt="user picture">
+        {% endif %}
         <div class="media-body">
         <h5 class="mt-0">Page of {{ user_obj.get_full_name|default:user_obj.username }}</h5>
         <p>Username: {{ user_obj.username }}</p>
@@ -25,4 +29,7 @@
     {% for project in projects %}
         {% include 'partial/project_card.html' %}
     {% endfor %}
+    {% if not projects %}
+        <p>This user is not part of any project</p>
+    {% endif %}
 {% endblock %}
