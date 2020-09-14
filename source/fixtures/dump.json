@@ -430,5 +430,55 @@
       12
     ]
   }
+},
+{
+  "model": "accounts.profile",
+  "pk": 1,
+  "fields": {
+    "user": 13,
+    "githubprofile": null,
+    "about": "i am test",
+    "profile_pic": ""
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 2,
+  "fields": {
+    "user": 10,
+    "githubprofile": "https://github.com/",
+    "about": "I am a very important guy in this company",
+    "profile_pic": "user_pics/manager.jpg"
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 3,
+  "fields": {
+    "user": 12,
+    "githubprofile": "https://github.com/",
+    "about": "I'm helping",
+    "profile_pic": "user_pics/developer.jpg"
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 4,
+  "fields": {
+    "user": 11,
+    "githubprofile": "https://github.com/",
+    "about": "I'm the one who's doing all the hard work >.<",
+    "profile_pic": "user_pics/team_lead.jpg"
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 5,
+  "fields": {
+    "user": 1,
+    "githubprofile": null,
+    "about": null,
+    "profile_pic": ""
+  }
 }
 ]
