@@ -3,10 +3,10 @@
 
 {% block menu_links %}
     <li class="nav-item">
-        <a class="nav-link ml-4" href="#">Edit</a>
+        <a class="nav-link ml-3" href="{% url 'accounts:change' user_obj.pk %}">Edit</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link mr-4" href="#">Change password</a>
+        <a class="nav-link mr-3" href="#">Change password</a>
     </li>
 {% endblock %}
 
